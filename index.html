@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Vue Component - "Range Input"</title>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+	<template id="range-slider">
+		<div class="range-slider">
+			<input type="range" :value="value" @input="onInput" :min="min" :max="max" :step="step">
+			<div class="percents">
+				<span v-for="option in options" v-bind:value="option.value" @click="getValue(option.value)">{{ option.value }}</span>
+			</div>
+		</div>
+	</template>
+
+	<div id="app">
+		<center>
+			<h2>{{ range }} %</h2>
+			<range-slider v-model="range" :step=".1"></range-slider>
+		</center>
+	</div>
+	
+	<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+	<script>
+
+		const rangeSlider = {
+			template: '#range-slider',
+			props: {
+				value: 0,
+				min: {
+					type: Number,
+					default: 0
+				},
+				max: {
+					type: Number,
+					default: 100
+				},
+				step: {
+					type: Number,
+					default: 1
+				}
+			},
+
+			data: function () {
+				return {
+					range: this.value,
+					options: [
+						{"value": 25},
+						{"value": 50},
+						{"value": 75},
+						{"value": 100}
+					]
+				}
+			},
+
+			methods: {
+				onInput(e) {
+					this.$emit('input', e.target.value)
+				},
+
+				getValue(arg) {
+					this.range = arg;
+				},
+			},
+
+			watch: {
+				range: function () {
+					this.$emit('input', this.range)
+				},
+
+				value: function () {
+					this.range = this.value;
+				}
+			}
+		};
+
+		const app = new Vue({
+			el: '#app',
+			components: {
+				'range-slider': rangeSlider
+			},
+
+			data: {
+				range: 35.4,
+			}
+		});
+
+	</script>
+</body>
+</html>

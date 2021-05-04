@@ -1,0 +1,118 @@
+html, body {
+  color: #fff;
+  background: #23293F;
+  font-family: 'Roboto', sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+h2 {
+  margin: 5px;
+}
+
+.range-slider input {
+  -webkit-appearance: none;
+  display: inline-block;
+  width: 400px;
+  background: none;
+  margin-top: 0;
+  margin-bottom: 13px;
+}
+
+.range-slider input:focus {
+  outline: none;
+}
+
+.range-slider input::-webkit-slider-runnable-track {
+  height: 25px;
+  border-radius: 20px;
+  background-image: linear-gradient(to left, rgb(199, 10, 10), rgb(194, 51, 9), rgb(188, 92, 8), rgb(183, 132, 6), rgb(177, 173, 5), rgb(172, 214, 4), rgb(149, 214, 38), rgb(126, 215, 72), rgb(104, 215, 106), rgb(81, 215, 139), rgb(58, 216, 173), rgb(35, 216, 207));
+  cursor: pointer;
+  transition: all 0.2s;
+  padding: 0 3px;
+}
+
+.range-slider input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  background: #fff;
+  z-index: 3;
+  cursor: pointer;
+  transform: translateY(12%);
+}
+
+.range-slider input::-moz-range-track {
+  background: #3f51b5;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.range-slider input::-moz-range-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  background: #fff;
+  cursor: pointer;
+}
+
+.range-slider input::-ms-track {
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.range-slider input::-ms-thumb {
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  background: #fff;
+  position: relative;
+  border: 2px solid #3f51b5;
+  cursor: pointer;
+  transform: translateY(50%);
+}
+
+.percents {
+  display: flex;
+  justify-content: center;
+  width: 400px;
+  flex-flow: row wrap;
+  margin: auto;
+}
+
+.percents span {
+  background: #576291;
+  padding: 5px 9px;
+  border-radius: 15px;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.percents span:last-child {
+  margin-right: 0;
+}
+
+@media screen and (max-width: 460px) {
+  html, body {
+    padding: 0 10px;
+  }
+
+  .percents {
+    width: 300px;
+  }
+
+  .range-slider input {
+    width: 300px;
+  }
+
+  .percents span {
+    margin-right: 10px;
+  }
+
+  .percents span:last-child {
+    margin-right: 0;
+  }
+}
